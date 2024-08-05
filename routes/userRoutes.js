@@ -1,8 +1,10 @@
-const express=require('express');
-const {generateOTP,verifyOTP}=require('../controllers/userControllers');
-const router=express.Router();
+const express = require('express');
+const router = express.Router();
+const userController = require('../controllers/userControllers');
 
-router.route("/generateOTP").post(generateOTP);
-router.route("/verifyOTP").get(verifyOTP);
+router.get('/', userController.getAllUsers);
+router.post('/', userController.addUser);
+router.put('/:id', userController.updateUser);
+router.delete('/:id', userController.deleteUser);
 
-module.exports=router;
+module.exports = router;
